@@ -41,7 +41,7 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
-Assets/*.json
+/Assets/*.json
 Packages/*.json
 
 
