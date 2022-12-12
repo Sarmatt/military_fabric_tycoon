@@ -61,7 +61,4 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
-*.csproj
-Assets/InventoryData.json
-military_fabric_tycoon.sln
 ProjectSettings/ProjectVersion.txt
