@@ -1,12 +1,11 @@
-﻿using ObjectAction;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 
-public class Cube : MonoBehaviour,IPointerClickHandler
+public class Item : MonoBehaviour,IPointerClickHandler
 {
     [SerializeField] private Renderer _renderer;
-    private RotateObject _rotateObject;
+    private Rotateble _rotateObject;
 
     // Update is called once per frame
     private void OnTriggerEnter(Collider other)

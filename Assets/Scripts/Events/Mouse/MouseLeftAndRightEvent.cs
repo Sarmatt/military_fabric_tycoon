@@ -3,11 +3,14 @@ using UnityEngine;
 
 namespace Event.Mouse
 {
-    public class MouseLeftAndRightEvent : MouseBaseEvent
+    public class MouseLeftAndRightEvent  :MonoBehaviour
     {
+        public static event Action<int> onMouse;
         private void Update()
         {
-            HandlePosition(Input.mousePosition.x);
+            if (Input.touchCount != 1||Input.GetTouch(0).deltaPosition.x==0) return;
+            var direction = Input.GetTouch(0).deltaPosition.x > 0 ? 1 : -1;
+            onMouse?.Invoke(direction);
         }
     }
 }
