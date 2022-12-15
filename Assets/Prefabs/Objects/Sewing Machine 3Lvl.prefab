@@ -1245,7 +1245,7 @@ MonoBehaviour:
   Name: Sewing machine 3000
   NeededMoney: 100000
   Avatar: {fileID: 21300000, guid: 27a49b0e8132b60408366a6f9d602502, type: 3}
-  _timeCoef: 0.25
+  TimeCoef: 1
   StaffId: 0
   SelectedStaff:
     Id: 0

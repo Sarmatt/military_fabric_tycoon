@@ -755,6 +755,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5434216628064059176}
+  - component: {fileID: 1032787646909872288}
   m_Layer: 5
   m_Name: Item Cell
   m_TagString: Untagged
@@ -786,6 +787,30 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 796.824, y: 283.706}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1032787646909872288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5434216628064059179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a70ef152736221845a4239e6f716d113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stars:
+  - {fileID: 5434216627365106706}
+  - {fileID: 5434216628241639306}
+  - {fileID: 5434216628572045692}
+  - {fileID: 5434216628160416447}
+  - {fileID: 5434216628355335462}
+  _fullStar: {fileID: 21300000, guid: c0a59fc6f31a93f4bb4a69079f2bcf81, type: 3}
+  _halfStar: {fileID: 21300000, guid: 961920473b3c88f4fbab6d09d58c120d, type: 3}
+  _nullStar: {fileID: 21300000, guid: 39e7186251170374e83d8d157a824d68, type: 3}
+  _priceText: {fileID: 5434216628164402780}
+  _image: {fileID: 5434216628394068266}
+  _countText: {fileID: 5434216627357196746}
 --- !u!1 &5434216628141461620
 GameObject:
   m_ObjectHideFlags: 0
