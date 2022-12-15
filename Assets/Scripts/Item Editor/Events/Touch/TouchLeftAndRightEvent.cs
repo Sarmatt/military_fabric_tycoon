@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Event.Mouse
 {
-    public class MouseLeftAndRightEvent  :MonoBehaviour
+    public class TouchLeftAndRightEvent  :MonoBehaviour
     {
         public static event Action<int> onMouse;
         private void Update()

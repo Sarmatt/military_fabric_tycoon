@@ -6,13 +6,13 @@ public class Rotateble : MonoBehaviour
     [SerializeField] private bool _isRotate;
     private void OnEnable()
     {
-        MouseUpAndDownEvent.onMouse +=onMouseUpAndDownEvent;
-        MouseLeftAndRightEvent.onMouse +=onMouseLeftAndRightEvent ;
+        TouchUpAndDownEvent.onMouse +=onMouseUpAndDownEvent;
+        TouchLeftAndRightEvent.onMouse +=onMouseLeftAndRightEvent ;
     }
     private void OnDisable()
     {
-        MouseUpAndDownEvent.onMouse -=onMouseUpAndDownEvent;
-        MouseLeftAndRightEvent.onMouse -=onMouseLeftAndRightEvent ;
+        TouchUpAndDownEvent.onMouse -=onMouseUpAndDownEvent;
+        TouchLeftAndRightEvent.onMouse -=onMouseLeftAndRightEvent ;
     }
     private void onMouseUpAndDownEvent(int value)
     {

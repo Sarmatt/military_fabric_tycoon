@@ -1,52 +1,43 @@
-﻿using UnityEngine;
+﻿using Event.Mouse;
+using UnityEngine;
 
 
 public class Scalabel : MonoBehaviour
 {
+    public float MaxDistance = 25;
+    public float MinDistance = 6;
     public Camera Camera;
+    private float _itemSquare;
     private void Awake()
     {
         if (Camera == null)
             Camera = Camera.main;
-        Camera.transform.position = new Vector3(transform.position.x,transform.position.y,-3);
+        Camera.transform.position = new Vector3(transform.position.x,transform.position.y,-10);
     }
-
-    private void Update()
+    private void OnEnable()
     {
-        //Pinch
-        if (Input.touchCount >= 2)
-        {
-            var pos1 = PlanePosition(Input.GetTouch(0).position);
-            var pos2 = PlanePosition(Input.GetTouch(1).position);
-            var pos1b = PlanePosition(Input.GetTouch(0).position - Input.GetTouch(0).deltaPosition);
-            var pos2b = PlanePosition(Input.GetTouch(1).position - Input.GetTouch(1).deltaPosition);
-
-            //calc zoom
-            var zoom = Vector3.Distance(pos1,pos2) /
-                       Vector3.Distance(pos1b,pos2b);
-
-            //edge case
-            if (zoom == 0 || zoom > 10)
-                return;
-
-            //Move cam amount the mid ray
-            Camera.transform.position = new Vector3(Camera.transform.position.x,Camera.transform.position.y,Camera.transform.position.z * zoom);
-        }
-
+        DoubleTouchEvent.Handle += DoubleTouchEventHandle;
     }
-
-    protected Vector3 PlanePosition(Vector2 screenPos)
+    private void OnDisable()
     {
-        //position
-        var rayNow = Camera.ScreenPointToRay(screenPos);
-        if (Physics.Raycast(rayNow,out var enterNow))
-            return rayNow.GetPoint(enterNow.distance);
-
-        return Vector3.zero;
+        DoubleTouchEvent.Handle -= DoubleTouchEventHandle;
     }
-
-    private void OnDrawGizmos()
+    private void DoubleTouchEventHandle(Touch touch1,Touch touch2)
     {
-        Gizmos.DrawLine(transform.position,transform.position + transform.up);
+        var pos1 = touch1.position;
+        var pos2 = touch2.position;
+        var pos1b = touch1.position - touch1.deltaPosition;
+        var pos2b = touch2.position - touch2.deltaPosition;
+
+        //calc zoom
+        var zoom = Vector3.Distance(pos1b,pos2b) /
+                   Vector3.Distance(pos1,pos2);
+
+        var newPosition = new Vector3(Camera.transform.position.x,Camera.transform.position.y,Camera.transform.position.z * zoom);
+
+        var newDistance = Vector3.Distance(newPosition,transform.position);
+        if (MinDistance > newDistance || newDistance > MaxDistance) return;
+
+        Camera.transform.position = newPosition;
     }
 }

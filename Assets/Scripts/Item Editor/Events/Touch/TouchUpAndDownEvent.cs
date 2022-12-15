@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Event.Mouse
 {
-    public class MouseUpAndDownEvent  :MonoBehaviour
+    public class TouchUpAndDownEvent  :MonoBehaviour
     {
         public static event Action<int> onMouse;
         private void Update()

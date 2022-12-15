@@ -216,6 +216,75 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &669698808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 669698809}
+  - component: {fileID: 669698812}
+  - component: {fileID: 669698811}
+  - component: {fileID: 669698810}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &669698809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669698808}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.0257435, y: 2.0714817, z: 12.419535}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &669698810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669698808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e645fbf16647199de639e4584fb837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &669698811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669698808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b798988b862f427d8773d6f72cf0ea20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &669698812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669698808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d2cbbf41437448aad014be267ab1dab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &698972773
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,7 +383,7 @@ Camera:
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
+  m_FocalLength: 12.38304
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -369,6 +438,7 @@ GameObject:
   - component: {fileID: 1919092573}
   - component: {fileID: 1919092577}
   - component: {fileID: 1919092578}
+  - component: {fileID: 1919092579}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -478,4 +548,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intensity: 2
-  _isRotate: 1
+  _isRotate: 0
+--- !u!114 &1919092579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919092572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66bed41a61c64c12a02f976b4742b9d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxDistance: 25
+  MinDistance: 6
+  Camera: {fileID: 1900594131}
