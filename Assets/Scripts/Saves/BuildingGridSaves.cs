@@ -100,8 +100,9 @@ public class BuildingGridSaves : MonoBehaviour
                 GameObject instance = Instantiate(_buildingGrid.GetPrefabByID(child.PrefId)).gameObject;
                 instance.transform.position = new Vector3(child.PlaceX, 0, child.PlaceZ);
                 ConvertDataToPlacingObject(child, instance.GetComponent<PlacingObject>());
-                Equipment equipment = instance.GetComponent<Equipment>();
+                Equipment equipment = instance.GetComponent<Equipment>();            
                 equipment.StaffId = child.CreatingStaffId;
+                equipment.SetTimerValue();
                 equipment.CanMakeStaff = true;
             }      
         }

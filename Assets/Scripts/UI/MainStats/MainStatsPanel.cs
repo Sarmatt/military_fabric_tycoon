@@ -3,8 +3,6 @@ using TMPro;
 
 public class MainStatsPanel : MonoBehaviour
 {
-    [SerializeField] private TMP_InputField _nameField;
-
     [Header("Items Panel")]
     [SerializeField] private MainPanelCellItem _cellPref;
     [SerializeField] private Transform _placeForTransforms;
@@ -12,7 +10,6 @@ public class MainStatsPanel : MonoBehaviour
     private void OnEnable()
     {
         DisplayItems();
-        _nameField.text = MainStatsFunctional.singleton.Name;
     }
 
     private void ClearPlace()
