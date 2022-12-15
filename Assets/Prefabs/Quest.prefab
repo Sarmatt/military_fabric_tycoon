@@ -471,7 +471,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: de17848f870492d44a59340ae0c48c1c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cf896919860e82a4f85e44e55c5f757c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -498,7 +498,15 @@ MonoBehaviour:
   _experience: {fileID: 2621661940336290547}
   _button: {fileID: 2621661940311937086}
   CurQuest:
-    Item: {fileID: 0}
+    Item:
+      Id: 0
+      EquipmentId: 0
+      Name: 
+      TimeForCreating: 0
+      Experience: 0
+      Price: 0
+      Rating: 0
+      Avatar: {fileID: 0}
     Money: 0
     Count: 0
     Experience: 0
