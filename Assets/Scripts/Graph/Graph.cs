@@ -16,15 +16,21 @@ public class Graph : MonoBehaviour
 
     [Header("Main graph settings")]
     [SerializeField] private List<TMP_Text> _vertivalPoints;
-    [SerializeField] private List<TMP_Text> _horizontalPoints;
     [SerializeField] private float _xSize;
     [SerializeField] private float _lineThickness;
     [SerializeField] private int _maxY;
     [SerializeField] private float _scale;
+    [SerializeField] private bool _debugging;
 
     private void Start()
     {
         DisplayGraphs();
+    }
+
+    private void Update()
+    {
+        if (_debugging)
+            DisplayGraphs();
     }
 
     private GameObject GetCreatedCircle(Vector2 anchoredPos)

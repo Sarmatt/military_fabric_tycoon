@@ -32,15 +32,17 @@ public class EconomyFunctional : MonoBehaviour
         return false;
     }
 
-    public void DisplayText()
+    public string ConvertIntToMoneyText(int value)
     {
         string res = "";
-        if(_mainStats.Money > 1000000)
-            res += _mainStats.Money / 1000000 + "M";
-        else if(_mainStats.Money > 1000)
-            res += _mainStats.Money / 1000 + "K";
+        if (value > 1000000)
+            res += value / 1000000 + "M";
+        else if (value > 1000)
+            res += value / 1000 + "K";
         else
-            res += _mainStats.Money;
-        _moneyText.text = res;
+            res += value;
+        return res;
     }
+
+    public void DisplayText() => _moneyText.text = ConvertIntToMoneyText(_mainStats.Money);
 }

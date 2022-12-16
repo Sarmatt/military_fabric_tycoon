@@ -9,23 +9,15 @@ public class Equipment : MonoBehaviour
     public string Name;
     public int NeededMoney;
     public Sprite Avatar;
-    [SerializeField] private float _timeCoef = 1;
+    public float TimeCoef = 1;
     [HideInInspector] public int StaffId;
     public CreatingStaff SelectedStaff;
-    private bool _staffLoaded = false;
 
     [HideInInspector] public bool CanMakeStaff;
-    private bool _creatingItem;
-
     public float Timer;
 
     private void Update()
     {
-        if (!_staffLoaded && StaffId != 0)
-        {
-            SelectedStaff = StaffGeneralList.singleton.GetStaff(StaffId);
-            _staffLoaded = true;
-        }
         if (CanMakeStaff)
         {
             if (Timer > 0)
@@ -41,6 +33,11 @@ public class Equipment : MonoBehaviour
         }
     }
 
-    public float GetTimerValue() => SelectedStaff.TimeForCreating * _timeCoef;
-    public void SetTimerValue() => Timer = GetTimerValue();
+    public float GetTimerValue() => SelectedStaff.TimeForCreating * TimeCoef;
+    public void SetTimerValue()
+    {
+        if(StaffId != 0)
+            SelectedStaff = StaffGeneralList.singleton.GetStaff(StaffId);
+        Timer = GetTimerValue();
+    }
 }

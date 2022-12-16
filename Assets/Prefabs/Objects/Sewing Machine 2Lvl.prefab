@@ -1800,7 +1800,7 @@ MonoBehaviour:
   Name: Mega sewing machine
   NeededMoney: 25000
   Avatar: {fileID: 21300000, guid: 9683421d995675048b5a938d6f4f9656, type: 3}
-  _timeCoef: 0.5
+  TimeCoef: 1
   StaffId: 0
   SelectedStaff:
     Id: 0

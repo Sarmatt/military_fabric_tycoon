@@ -11,6 +11,7 @@ public class ShopCell : MonoBehaviour
     [SerializeField] private TMP_Text _titleText;
     [SerializeField] private TMP_Text _moneyText;
     [SerializeField] private Image Image;
+    [SerializeField] private TMP_Text _timeValueText;
 
     private void Start() => _object = Equipment.gameObject.GetComponent<PlacingObject>();
 
@@ -18,7 +19,8 @@ public class ShopCell : MonoBehaviour
     {
         Image.sprite = Equipment.Avatar;
         _titleText.text = "" + Equipment.Name;
-        _moneyText.text = "" + Equipment.NeededMoney;
+        _moneyText.text = "" + EconomyFunctional.singleton.ConvertIntToMoneyText(Equipment.NeededMoney);
+        _timeValueText.text = "" + Equipment.TimeCoef;
     }
 
     public void PlaceObject()

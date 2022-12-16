@@ -78,16 +78,6 @@ public class BuildingGrid : MonoBehaviour
         }       
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        if (_selectedObject != null)
-        {
-            _selectedObject.transform.position = new Vector3((int)eventData.position.x,
-                                                             _selectedObject.transform.position.y,
-                                                             (int)eventData.position.y);
-        }
-    }
-
     private void OnDrawGizmosSelected()
     {
         for (int x = 0; x < _gridSize.x; x++)
