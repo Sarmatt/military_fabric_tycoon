@@ -11,7 +11,6 @@ namespace Event.Mouse
             if (Input.touchCount != 2) return;
 
             Handle?.Invoke(Input.GetTouch(0),Input.GetTouch(1));
-
         }
     }
 }

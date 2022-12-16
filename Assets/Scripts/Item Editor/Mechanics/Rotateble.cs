@@ -2,7 +2,7 @@
 using UnityEngine;
 public class Rotateble : MonoBehaviour
 {
-    [SerializeField] private int intensity = 2;
+    [SerializeField] private float intensity = 2;
     [SerializeField] private bool _isRotate;
     private void OnEnable()
     {
