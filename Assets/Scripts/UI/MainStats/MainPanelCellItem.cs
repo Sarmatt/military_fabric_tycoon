@@ -11,6 +11,7 @@ public class MainPanelCellItem : MonoBehaviour
     [SerializeField] private Sprite _halfStar;
     [SerializeField] private Sprite _nullStar;
     [Header("Displaying")]
+    [SerializeField] private TMP_Text _nameText;
     [SerializeField] private TMP_InputField _priceText;
     [SerializeField] private Image _image;
     [SerializeField] private TMP_Text _countText;
@@ -36,8 +37,9 @@ public class MainPanelCellItem : MonoBehaviour
 
     private void DisplayCount(int count) => _countText.text = count + "";
 
-    public void DisplayData(float rating, int price, Sprite image, int count)
+    public void DisplayData(string name, float rating, int price, Sprite image, int count)
     {
+        _nameText.text = name;
         DisplayStars(rating);
         DisplayText(price);
         DisplayImage(image);
