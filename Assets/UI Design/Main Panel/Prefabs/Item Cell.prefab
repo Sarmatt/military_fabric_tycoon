@@ -808,6 +808,7 @@ MonoBehaviour:
   _fullStar: {fileID: 21300000, guid: c0a59fc6f31a93f4bb4a69079f2bcf81, type: 3}
   _halfStar: {fileID: 21300000, guid: 961920473b3c88f4fbab6d09d58c120d, type: 3}
   _nullStar: {fileID: 21300000, guid: 39e7186251170374e83d8d157a824d68, type: 3}
+  _nameText: {fileID: 5434216628591445911}
   _priceText: {fileID: 5434216628164402780}
   _image: {fileID: 5434216628394068266}
   _countText: {fileID: 5434216627357196746}

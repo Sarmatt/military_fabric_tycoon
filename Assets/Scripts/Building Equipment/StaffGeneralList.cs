@@ -6,7 +6,10 @@ public class StaffGeneralList : MonoBehaviour
 {
     public static StaffGeneralList singleton;
     public List<CreatingStaff> AllStaffForCreating = new List<CreatingStaff>();
-    private void Awake() => singleton = this;
+    private void Awake()
+    {
+        singleton = this;
+    }
 
     public List<CreatingStaff> GetCreatingStaffListById(int id)
     {
@@ -32,4 +35,7 @@ public class StaffGeneralList : MonoBehaviour
         Debug.LogError("Can't find creating staff with id: " + id);
         return null;
     }
+
+    public void AddItem(CreatingStaff staff)
+        => AllStaffForCreating.Add(staff);
 }

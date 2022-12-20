@@ -12,7 +12,7 @@ public class Scalabel : MonoBehaviour
     {
         if (Camera == null)
             Camera = Camera.main;
-        Camera.transform.position = new Vector3(transform.position.x,transform.position.y,-10);
+        Camera.transform.position = new Vector3(transform.position.x,transform.position.y-1,-10);
     }
     private void OnEnable()
     {
