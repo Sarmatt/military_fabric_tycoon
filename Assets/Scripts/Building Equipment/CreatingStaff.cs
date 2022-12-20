@@ -19,6 +19,9 @@ public class CreatingStaff
     public ItemParameter Season;
     public Sprite Avatar;
 
+    [Range(0, 2)]
+    public int Demand;
+
     public CreatingStaff(
         int id,
         int equipmentId,
@@ -45,5 +48,40 @@ public class CreatingStaff
         MaterialType = materialType;
         Season = season;
         Avatar = avatar;
+        GetDemand();
+    }
+
+    public void GetDemand()
+    {
+        StaffShopCell shopCell = ShopItemsContainer.singleton.GetCellById(ShapeId);
+        if (Rating < 2f)
+        {
+            if (Price >= shopCell.MinPrice)
+                Demand = 0;
+            else
+                Demand = 1;
+        }
+        else if (Rating < 4f)
+        {
+            if (Price <= shopCell.MiddlePrice)
+                Demand = 2;
+            else if (Price > shopCell.MaxPrice)
+                Demand = 0;
+            else
+                Demand = 1;
+        }
+        else
+        {
+            if (Price <= shopCell.MaxPrice)
+                Demand = 2;
+            else
+                Demand = 0;
+        }        
+    }
+
+    public void ChangePrice(int value)
+    {
+        Price = value;
+        GetDemand();
     }
 }

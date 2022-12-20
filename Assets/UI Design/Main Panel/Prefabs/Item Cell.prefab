@@ -799,6 +799,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a70ef152736221845a4239e6f716d113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Staff:
+    Id: 0
+    EquipmentId: 0
+    Name: 
+    TimeForCreating: 0
+    Experience: 0
+    Price: 0
+    ShapeId: 0
+    Rating: 0
+    Camouflage: {fileID: 0}
+    MaterialType: {fileID: 0}
+    Season: {fileID: 0}
+    Avatar: {fileID: 0}
+    Demand: 0
   _stars:
   - {fileID: 5434216627365106706}
   - {fileID: 5434216628241639306}
@@ -812,6 +826,9 @@ MonoBehaviour:
   _priceText: {fileID: 5434216628164402780}
   _image: {fileID: 5434216628394068266}
   _countText: {fileID: 5434216627357196746}
+  _arrowImage: {fileID: 5434216627247572404}
+  _upArrow: {fileID: 21300000, guid: 54bc9419c91395a42af44fd823d2d883, type: 3}
+  _downArrow: {fileID: 21300000, guid: 6b89a2f3339e4664fb57fc495b83bf3b, type: 3}
 --- !u!1 &5434216628141461620
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,7 +1117,19 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1032787646909872288}
+        m_TargetAssemblyTypeName: MainPanelCellItem, Assembly-CSharp
+        m_MethodName: SetPrice
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []

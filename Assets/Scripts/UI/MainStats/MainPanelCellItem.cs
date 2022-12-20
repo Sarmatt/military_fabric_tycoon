@@ -5,6 +5,7 @@ using TMPro;
 
 public class MainPanelCellItem : MonoBehaviour
 {
+    public CreatingStaff Staff;
     [Header("Rating")]
     [SerializeField] private List<Image> _stars = new List<Image>();
     [SerializeField] private Sprite _fullStar;
@@ -15,6 +16,11 @@ public class MainPanelCellItem : MonoBehaviour
     [SerializeField] private TMP_InputField _priceText;
     [SerializeField] private Image _image;
     [SerializeField] private TMP_Text _countText;
+
+    [Header("Arrows")]
+    [SerializeField] private Image _arrowImage;
+    [SerializeField] private Sprite _upArrow;
+    [SerializeField] private Sprite _downArrow;
 
     private void DisplayStars(float rating) 
     {
@@ -44,5 +50,25 @@ public class MainPanelCellItem : MonoBehaviour
         DisplayText(price);
         DisplayImage(image);
         DisplayCount(count);
+        DisplayArrow();
     }
+
+    private void DisplayArrow()
+    {
+        _arrowImage.gameObject.SetActive(true);
+        int demand = Staff.Demand;
+        if (demand == 0)
+            _arrowImage.sprite = _downArrow;
+        else if (demand == 1)
+            _arrowImage.gameObject.SetActive(false);
+        else
+            _arrowImage.sprite = _upArrow;
+    }
+
+    public void SetPrice(string value)
+    {
+        Staff.ChangePrice(int.Parse(value));
+        DisplayArrow();
+    }
+
 }
