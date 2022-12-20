@@ -2,25 +2,27 @@
 using UnityEngine;
 public class Rotateble : MonoBehaviour
 {
-    [SerializeField] private float intensity = 2;
+    [SerializeField] private float _lAndRIntensity = 3.2f;
+    [SerializeField] private float _upIntensity = 2.3f;
     [SerializeField] private bool _isRotate;
+ 
     private void OnEnable()
     {
-        TouchUpAndDownEvent.onMouse +=onMouseUpAndDownEvent;
-        TouchLeftAndRightEvent.onMouse +=onMouseLeftAndRightEvent ;
+        TouchUpAndDownEvent.onMouse += OnMouseUpAndDownEvent;
+        TouchLeftAndRightEvent.onMouse += OnMouseLeftAndRightEvent ;
     }
     private void OnDisable()
     {
-        TouchUpAndDownEvent.onMouse -=onMouseUpAndDownEvent;
-        TouchLeftAndRightEvent.onMouse -=onMouseLeftAndRightEvent ;
+        TouchUpAndDownEvent.onMouse -= OnMouseUpAndDownEvent;
+        TouchLeftAndRightEvent.onMouse -= OnMouseLeftAndRightEvent ;
     }
-    private void onMouseUpAndDownEvent(int value)
+    private void OnMouseUpAndDownEvent(int value)
     {
-        RotateCube(intensity*value,0,0);
+        RotateCube(_upIntensity * value, 0, 0);
     }
-    private void onMouseLeftAndRightEvent(int value)
+    private void OnMouseLeftAndRightEvent(int value)
     {
-        RotateCube(0,intensity*value,0);
+        RotateCube(0, _lAndRIntensity * value, 0);
     }
     private void RotateCube(float x, float y, float z)
     {
