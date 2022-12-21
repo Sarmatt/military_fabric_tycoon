@@ -3232,6 +3232,7 @@ GameObject:
   - component: {fileID: 1639432506}
   - component: {fileID: 1639432507}
   - component: {fileID: 1639432508}
+  - component: {fileID: 1639432509}
   m_Layer: 5
   m_Name: Quests
   m_TagString: Untagged
@@ -3289,7 +3290,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timer: 10
-  _tempTimer: 0
+  _tempTimer: 10
+--- !u!114 &1639432509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639432505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63dbe5a7749990b43a640cfef24adbe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _functional: {fileID: 1639432507}
 --- !u!1 &1651061112
 GameObject:
   m_ObjectHideFlags: 0

@@ -127,8 +127,9 @@ public class QuestsGenerator : MonoBehaviour
             questItems.Add(questItem);
         }
         quest.Items = questItems;
-        quest.Experience = GetQuestMoneyCount(questItems);
-        quest.Money = GetQuestExperienceCount(questItems);
+        quest.Experience = GetQuestExperienceCount(questItems);
+        quest.Money = GetQuestMoneyCount(questItems);
         QuestsFunctional.singleton.AddQuest(quest);
+        GlobalEvents.QuestWasGenerated?.Invoke();
     }
 }

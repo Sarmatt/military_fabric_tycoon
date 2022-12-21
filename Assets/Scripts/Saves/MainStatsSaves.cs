@@ -39,7 +39,7 @@ public class MainStatsSaves : MonoBehaviour
 #if UNITY_ANDROID && !UNITY_EDITOR
         _path = Path.Combine(Application.persistentDataPath, "MainData.json");
 #else
-        _path = Path.Combine(Application.dataPath, "MainData.json");
+        _path = Path.Combine(Application.dataPath, "Saves/MainData.json");
 #endif
     }
 

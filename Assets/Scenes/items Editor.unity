@@ -5568,6 +5568,7 @@ GameObject:
   - component: {fileID: 1859851818}
   - component: {fileID: 1859851819}
   - component: {fileID: 1859851820}
+  - component: {fileID: 1859851821}
   m_Layer: 5
   m_Name: Item Editor
   m_TagString: Untagged
@@ -5619,6 +5620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a58175e7600aa04289496eab3b8cd1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentStaffId: 0
   _editingPrefs:
   - {fileID: 1919092580}
   - {fileID: 611207226}
@@ -5678,6 +5680,19 @@ MonoBehaviour:
   - {fileID: 2099568730}
   - {fileID: 211592686}
   - {fileID: 1130033558}
+--- !u!114 &1859851821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859851817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b37ed3e7d0f7047941cae1d36fc04f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _functional: {fileID: 1859851820}
 --- !u!1 &1876804972
 GameObject:
   m_ObjectHideFlags: 0

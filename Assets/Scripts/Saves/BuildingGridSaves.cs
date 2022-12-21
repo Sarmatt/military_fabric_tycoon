@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -41,7 +42,7 @@ public class BuildingGridSaves : MonoBehaviour
     private void Start()
     {
         InitializePath();
-        TryToLoadData();
+        StartCoroutine(TryToLoadData());
     }
 
     private void InitializePath()
@@ -49,7 +50,7 @@ public class BuildingGridSaves : MonoBehaviour
 #if UNITY_ANDROID && !UNITY_EDITOR
         _path = Path.Combine(Application.persistentDataPath, "BuildinGridData.json");
 #else
-        _path = Path.Combine(Application.dataPath, "BuildinGridData.json");
+        _path = Path.Combine(Application.dataPath, "Saves/BuildinGridData.json");
 #endif
     }
 
@@ -89,10 +90,14 @@ public class BuildingGridSaves : MonoBehaviour
     }
 
 
-    private void TryToLoadData()
+    private IEnumerator TryToLoadData()
     {
+       
         if (File.Exists(_path))
         {
+            //Штучна затримка
+            yield return new WaitForSeconds(0.1F);
+
             var inputString = File.ReadAllText(_path);
             BuildingGridData obj = JsonUtility.FromJson<BuildingGridData>(inputString);
             foreach(var child in obj.Objects)
@@ -100,7 +105,8 @@ public class BuildingGridSaves : MonoBehaviour
                 GameObject instance = Instantiate(_buildingGrid.GetPrefabByID(child.PrefId)).gameObject;
                 instance.transform.position = new Vector3(child.PlaceX, 0, child.PlaceZ);
                 ConvertDataToPlacingObject(child, instance.GetComponent<PlacingObject>());
-                Equipment equipment = instance.GetComponent<Equipment>();            
+                Equipment equipment = instance.GetComponent<Equipment>();
+                equipment.SelectedStaff = StaffGeneralList.singleton.GetStaff(child.CreatingStaffId);
                 equipment.StaffId = child.CreatingStaffId;
                 equipment.SetTimerValue();
                 equipment.CanMakeStaff = true;
