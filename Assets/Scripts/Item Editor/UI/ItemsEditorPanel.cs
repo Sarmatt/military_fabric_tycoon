@@ -9,7 +9,7 @@ public class ItemsEditorPanel : MonoBehaviour
     public static ItemsEditorPanel singleton;
 
     [Header("Main Parameters")]
-    private int _currentStaffId;
+    [HideInInspector] public int CurrentStaffId;
     [SerializeField] private List<EditingPref> _editingPrefs;
     [SerializeField] private int _currentEditingPrefId;
     [SerializeField] private EditingPref _editingPref;
@@ -202,13 +202,16 @@ public class ItemsEditorPanel : MonoBehaviour
     //Переписати логіку в майбутньому
     private float GetCalculatedTimeForCreating()
     {
-        float res = GetMiddleCalculatedRating() * 0.2f;
+        float res = GetMiddleCalculatedRating() * 2;
         return res;
     }
 
     private int GetCalculatedExperience()
     {
-        int res = (int)GetMiddleCalculatedRating() * 10;
+        int middleCalculatedRating = (int)GetMiddleCalculatedRating();
+        if (middleCalculatedRating == 0)
+            middleCalculatedRating = 1;
+        int res = middleCalculatedRating * 3;
         return res;
     }
 
@@ -228,7 +231,7 @@ public class ItemsEditorPanel : MonoBehaviour
         if(_itemName != "")
         {
             CreatingStaff staff = new CreatingStaff(
-                _currentStaffId,
+                CurrentStaffId,
                 1,
                 _itemName,
                 _price,
@@ -239,10 +242,10 @@ public class ItemsEditorPanel : MonoBehaviour
                 _currentCamo,
                 _editingPref.ClothType[_currentClothTypeid],
                 _editingPref.Seasons[_currentSeasonId],
-                GetGeneratedAvatar(_currentStaffId, _currentCamo)
+                GetGeneratedAvatar(CurrentStaffId, _currentCamo)
                 );
             StaffGeneralList.singleton.AddItem(staff);
-            _currentStaffId++;
+            CurrentStaffId++;
             GlobalEvents.StaffWasAdded?.Invoke();
             SceneManager.LoadScene(0);
         }

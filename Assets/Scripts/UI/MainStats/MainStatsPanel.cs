@@ -24,6 +24,7 @@ public class MainStatsPanel : MonoBehaviour
         foreach (var child in StaffGeneralList.singleton.AllStaffForCreating)
         {
             MainPanelCellItem instance = Instantiate(_cellPref, _placeForTransforms);
+            instance.Staff = child;
             instance.DisplayData(child.Name, child.Rating, child.Price, child.Avatar, InventoryFunctional.singleton.GetCountOfItem(child.Id));
         }
     }

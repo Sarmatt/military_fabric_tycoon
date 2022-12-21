@@ -1,9 +1,10 @@
 using UnityEngine;
+using System.Collections.Generic;
 using TMPro;
 
 public class QuestDisplayer : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _title;
+    [SerializeField] private List<TMP_Text> _titles = new List<TMP_Text>();
     [SerializeField] private TMP_Text _money;
     [SerializeField] private TMP_Text _experience;
     [SerializeField] private GameObject _button;
@@ -12,15 +13,30 @@ public class QuestDisplayer : MonoBehaviour
 
     private void Update()
     {
-        if (InventoryFunctional.singleton.ContainsStaff(CurQuest.Item.Id, CurQuest.Count))
+        if (QuestIsReady())
             _button.SetActive(true);
         else
             _button.SetActive(false);
     }
 
+    private bool QuestIsReady()
+    {
+        foreach (var item in CurQuest.Items)
+        {
+            if (!InventoryFunctional.singleton.ContainsStaff(item.Staff.Id, item.Count))
+                return false;
+        }
+        return true;
+    }
+
     public void DisplayData()
     {
-        _title.text = CurQuest.Item.Name + " x" + CurQuest.Count;
+        int i = 0;
+        foreach(var child in CurQuest.Items)
+        {
+            _titles[i].text = child.Staff.Name + " x" + child.Count;
+            i++;
+        }
         _money.text = CurQuest.Money + "";
         _experience.text = CurQuest.Experience + "";
     }
@@ -30,7 +46,8 @@ public class QuestDisplayer : MonoBehaviour
         EconomyFunctional.singleton.AddMoney(CurQuest.Money);
         MainStatsFunctional.singleton.AddExperience(CurQuest.Experience);
         QuestsFunctional.singleton.RemoveQuest(CurQuest);
-        InventoryFunctional.singleton.RemoveItem(CurQuest.Item, CurQuest.Count);
-        Destroy(this.gameObject);
+        foreach(var item in CurQuest.Items)
+            InventoryFunctional.singleton.RemoveItem(item.Staff, item.Count);
+        Destroy(gameObject);
     }
 }

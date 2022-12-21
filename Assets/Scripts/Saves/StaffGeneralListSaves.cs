@@ -27,7 +27,7 @@ public class StaffGeneralListSaves : MonoBehaviour
 #if UNITY_ANDROID && !UNITY_EDITOR
         _path = Path.Combine(Application.persistentDataPath, "MainData.json");
 #else
-        _path = Path.Combine(Application.dataPath, "StaffGeneralList.json");
+        _path = Path.Combine(Application.dataPath, "Saves/StaffGeneralList.json");
 #endif
     }
 

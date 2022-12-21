@@ -22,7 +22,7 @@ public class InventorySaves : MonoBehaviour
 #if UNITY_ANDROID && !UNITY_EDITOR
         _path = Path.Combine(Application.persistentDataPath, "InventoryData.json");
 #else
-        _path = Path.Combine(Application.dataPath, "InventoryData.json");
+        _path = Path.Combine(Application.dataPath, "Saves/InventoryData.json");
 #endif
     }
 

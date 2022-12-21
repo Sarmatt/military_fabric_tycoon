@@ -2890,6 +2890,58 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &1438251308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1438251310}
+  - component: {fileID: 1438251309}
+  m_Layer: 0
+  m_Name: StaffShopSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1438251309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438251308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d1bcbf2860f6db4a987869115530dc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cells:
+  - ShapeIds: 01000000
+    MinPrice: 500
+    MiddlePrice: 750
+    MaxPrice: 1000
+  - ShapeIds: 02000000
+    MinPrice: 300
+    MiddlePrice: 450
+    MaxPrice: 1000
+--- !u!4 &1438251310
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438251308}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 542.5988, y: 481.9689, z: -341.30145}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1442747703
 GameObject:
   m_ObjectHideFlags: 0
@@ -3180,6 +3232,7 @@ GameObject:
   - component: {fileID: 1639432506}
   - component: {fileID: 1639432507}
   - component: {fileID: 1639432508}
+  - component: {fileID: 1639432509}
   m_Layer: 5
   m_Name: Quests
   m_TagString: Untagged
@@ -3221,7 +3274,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Quests: []
   _placeForQuests: {fileID: 95263404}
-  _questPref: {fileID: 2621661940801702853, guid: f9ee30ad72e1f994eb8c84642063af3e, type: 3}
+  _oneItemQuestPref: {fileID: 2621661940801702853, guid: 89ea15b5761fcac4381ba6b515816c49, type: 3}
+  _twoItemQuestPref: {fileID: 2621661940801702853, guid: ad4a298ab406c2b40b3ff4334ee62759, type: 3}
+  _threeItemQuestPref: {fileID: 2621661940801702853, guid: cb2b8da36d69cec4e93b625545fb7f9d, type: 3}
 --- !u!114 &1639432508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3229,13 +3284,26 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1639432505}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a1226fab55fc164ba98f71b2544c5b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _timer: 10
-  _tempTimer: 0
+  _tempTimer: 10
+--- !u!114 &1639432509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639432505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63dbe5a7749990b43a640cfef24adbe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _functional: {fileID: 1639432507}
 --- !u!1 &1651061112
 GameObject:
   m_ObjectHideFlags: 0
