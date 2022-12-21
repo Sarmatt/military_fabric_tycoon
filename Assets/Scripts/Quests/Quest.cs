@@ -1,8 +1,9 @@
+using System.Collections.Generic;
+
 [System.Serializable]
 public class Quest
 {
-    public CreatingStaff Item;
+    public List<QuestItem> Items = new List<QuestItem>();
     public int Money;
-    public int Count;
     public int Experience;
 }

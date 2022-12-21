@@ -29,9 +29,19 @@ public class QuestsGenerator : MonoBehaviour
         return allStaff[Random.Range(0, allStaff.Count - 1)];
     }
 
-    private CreatingStaff GetGeneratedStaffByDemand()
+    //Довести до нормального вигляду
+    private int GetQuestItemsCount(List<CreatingStaff> list)
     {
-        List<CreatingStaff> allStaff = new List<CreatingStaff>(StaffGeneralList.singleton.AllStaffForCreating);
+        if (list.Count > 4)
+            return Random.Range(1, 3);
+        else if (list.Count > 2)
+            return Random.Range(1, 2);      
+        else
+            return 1;
+    }
+
+    private CreatingStaff GetGeneratedStaffByDemand(List<CreatingStaff> allStaff)
+    {
         CreatingStaff resStaff = GetRandomGeneratedStaff(allStaff);
         if (resStaff == null) return null;
         int rand = 0;
@@ -68,19 +78,57 @@ public class QuestsGenerator : MonoBehaviour
         return resStaff;
     }
 
+    private List<CreatingStaff> GetGeneraderStaffList(List<CreatingStaff> allStaff)
+    {
+        List<CreatingStaff> staff = new List<CreatingStaff>(allStaff);
+        List<CreatingStaff> resultList = new List<CreatingStaff>();
+        for(int i = 0; i < GetQuestItemsCount(allStaff); i++)
+        {
+            CreatingStaff resStaff = GetGeneratedStaffByDemand(staff);
+            if (resStaff == null) return null;
+            resultList.Add(resStaff);
+            staff.Remove(resStaff);         
+        }
+        return resultList;
+    }
+
+    //Додати кращу генерацію кількості в залежності від кількості станків і темпу виробництва
+    private int GetItemCount()
+    {
+        return Random.Range(1, 10);
+    }
+
+    private int GetQuestMoneyCount(List<QuestItem> items)
+    {
+        int res = 0;
+        foreach(var item in items)
+            res += item.Count * item.Staff.Price;
+        return res;
+    }
+
+    private int GetQuestExperienceCount(List<QuestItem> items)
+    {
+        int res = 0;
+        foreach (var item in items)
+            res += item.Count * item.Staff.Experience;
+        return res;
+    }
+
     private void GenerateQuest()
     {
+        List<CreatingStaff> allStaff = StaffGeneralList.singleton.AllStaffForCreating;
         Quest quest = new Quest();
-        CreatingStaff curStaff = GetGeneratedStaffByDemand();
-        if (curStaff == null) return;
-        quest.Item = curStaff;
-        quest.Experience = curStaff.Experience * quest.Count;
-        quest.Money = quest.Count * curStaff.Price;
-        
-        //Додати кращу генерацію кількості в залежності від кількості станків і темпу виробництва
-        quest.Count = Random.Range(1, 10);
-        //---------------------------------------------------------------------------------------
-
+        List<CreatingStaff> items = GetGeneraderStaffList(allStaff);
+        if (items == null) return;
+        List<QuestItem> questItems = new List<QuestItem>();
+        foreach(var item in items)
+        {
+            QuestItem questItem = new QuestItem(item, GetItemCount());
+            questItems.Add(questItem);
+        }
+        quest.Items = questItems;
+        quest.Experience = GetQuestMoneyCount(questItems);
+        quest.Money = GetQuestExperienceCount(questItems);
         QuestsFunctional.singleton.AddQuest(quest);
     }
 }

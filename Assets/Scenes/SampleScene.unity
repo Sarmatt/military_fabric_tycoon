@@ -3273,7 +3273,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Quests: []
   _placeForQuests: {fileID: 95263404}
-  _questPref: {fileID: 2621661940801702853, guid: f9ee30ad72e1f994eb8c84642063af3e, type: 3}
+  _oneItemQuestPref: {fileID: 2621661940801702853, guid: 89ea15b5761fcac4381ba6b515816c49, type: 3}
+  _twoItemQuestPref: {fileID: 2621661940801702853, guid: ad4a298ab406c2b40b3ff4334ee62759, type: 3}
+  _threeItemQuestPref: {fileID: 2621661940801702853, guid: cb2b8da36d69cec4e93b625545fb7f9d, type: 3}
 --- !u!114 &1639432508
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,18 +9,31 @@ public class QuestsFunctional : MonoBehaviour
 
     [Header("Displaying")]
     public Transform _placeForQuests;
-    [SerializeField] private GameObject _questPref;
+    [SerializeField] private GameObject _oneItemQuestPref;
+    [SerializeField] private GameObject _twoItemQuestPref;
+    [SerializeField] private GameObject _threeItemQuestPref;
 
     private void Awake() => singleton = this;
 
     private void OnEnable() => DisplayQuests();
 
+    public void GenerateQuest(Quest quest)
+    {
+        QuestDisplayer instance = null;
+        if (quest.Items.Count == 1)
+            instance = Instantiate(_oneItemQuestPref, _placeForQuests).GetComponent<QuestDisplayer>();
+        else if (quest.Items.Count == 2)
+            instance = Instantiate(_twoItemQuestPref, _placeForQuests).GetComponent<QuestDisplayer>();
+        else if (quest.Items.Count == 3)
+            instance = Instantiate(_threeItemQuestPref, _placeForQuests).GetComponent<QuestDisplayer>();
+        instance.CurQuest = quest;
+        instance.DisplayData();
+    }
+
     public void AddQuest(Quest quest)
     {
         Quests.Add(quest);
-        QuestDisplayer instance = Instantiate(_questPref, _placeForQuests).GetComponent<QuestDisplayer>();
-        instance.CurQuest = quest;
-        instance.DisplayData();
+        GenerateQuest(quest);
     }
 
     public void RemoveQuest(Quest quest) => Quests.Remove(quest);
@@ -29,12 +42,7 @@ public class QuestsFunctional : MonoBehaviour
     {
         foreach (Transform child in _placeForQuests)
             Destroy(child.gameObject);
-
         foreach(var quest in Quests)
-        {
-            QuestDisplayer instance = Instantiate(_questPref, _placeForQuests).GetComponent<QuestDisplayer>();
-            instance.CurQuest = quest;
-            instance.DisplayData();
-        }
+            GenerateQuest(quest);
     }
 }
