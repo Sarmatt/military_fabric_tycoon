@@ -9,6 +9,8 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
+/Assets/Saves/*.json
+/Assets/Saves/*.json.meta
 /Assets/*.json
 /Assets/*.json.meta
 /Packages/packages-lock.json
