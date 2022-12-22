@@ -12,6 +12,7 @@ public class BuildingGridDataObject
     public int RotY;
     public int CreatingStaffId;
     public Quaternion Rotation;
+    public Vector3 StartCoords;
 
     public BuildingGridDataObject(int PrefId, int PlaceX, int PlaceZ, int RotY, int CreatingStaffId, Quaternion Rotation)
     {
@@ -65,7 +66,8 @@ public class BuildingGridSaves : MonoBehaviour
                                                                     item.PlaceZ, 
                                                                     item.RotY, 
                                                                     CreatingStaffId, 
-                                                                    item.transform.rotation);
+                                                                    item.transform.rotation
+                                                                    );
             buildingGridData.Objects.Add(obj);           
         }
         var outputSrt = JsonUtility.ToJson(buildingGridData);

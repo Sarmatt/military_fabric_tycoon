@@ -66,10 +66,20 @@ public class BuildingGrid : MonoBehaviour
                         if (ObjectCanBePlaced(x, z))
                             PlaceObject(x, z);
                         else
-                            DontPlaceObject();
+                        {
+                            if (!_selectedObject.ChangingPlace)
+                                DontPlaceObject();
+                            else
+                            {
+                                _selectedObject.ResetCoords();
+                                GridObjectsList.Add(_selectedObject);
+                            }
+                               
+                        }             
                         _scrollingScript.gameObject.SetActive(true);
                         _startedDragging = false;
                         _swithcer = false;
+                        _selectedObject = null;
                     }
                     else
                         _startedDragging = false;
@@ -137,7 +147,6 @@ public class BuildingGrid : MonoBehaviour
         _selectedObject.PlaceObject();
         GridObjectsList.Add(_selectedObject);
         GlobalEvents.BuildingGridWasChanged?.Invoke();
-        _selectedObject = null;
     }
 
     public PlacingObject GetPrefabByID(int id)

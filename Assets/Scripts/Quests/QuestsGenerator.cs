@@ -54,7 +54,6 @@ public class QuestsGenerator : MonoBehaviour
                     return resStaff;
                 else
                 {
-                    allStaff.Remove(resStaff);
                     resStaff = GetRandomGeneratedStaff(allStaff);
                     continue;
                 }
@@ -67,7 +66,6 @@ public class QuestsGenerator : MonoBehaviour
                     return resStaff;
                 else
                 {
-                    allStaff.Remove(resStaff);
                     resStaff = GetRandomGeneratedStaff(allStaff);
                     continue;
                 }

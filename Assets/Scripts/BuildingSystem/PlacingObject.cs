@@ -12,6 +12,10 @@ public class PlacingObject : MonoBehaviour
     [HideInInspector] public int RotY;
     public PointerClickHandler PointerClickHandler;
 
+    [HideInInspector] public Vector3 StartCoords;
+    [HideInInspector] public Quaternion StartRotation;
+    [HideInInspector] public bool ChangingPlace = false;
+
     private void Start()
     {
         if (_objectData == null)
@@ -43,5 +47,19 @@ public class PlacingObject : MonoBehaviour
         else SetMaterial(Color.green);
     }
 
-    public void PlaceObject() => SetMaterial(Color.white);
+    public void PlaceObject()
+    {
+        ChangingPlace = false;
+        StartRotation = transform.rotation;
+        StartCoords = transform.position;
+        SetMaterial(Color.white);
+    }
+
+    public void ResetCoords()
+    {
+        ChangingPlace = false;
+        transform.position = StartCoords;
+        transform.rotation = StartRotation;
+        SetMaterial(Color.white);
+    }
 }

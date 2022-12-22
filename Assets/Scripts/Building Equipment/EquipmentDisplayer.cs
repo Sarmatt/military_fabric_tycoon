@@ -32,7 +32,9 @@ public class EquipmentDisplayer : MonoBehaviour
     public void StartPlacing()
     {
         _panel.SetActive(false);
-        BuildingGrid.singleton.MoveObject(_functional.GetComponent<PlacingObject>());
+        PlacingObject functional = _functional.GetComponent<PlacingObject>();
+        functional.ChangingPlace = true;
+        BuildingGrid.singleton.MoveObject(functional);
     }
 
     private void DisplayItems()
