@@ -16,6 +16,7 @@ public class MainStatsFunctional : MonoBehaviour
     [SerializeField] private TMP_Text _nameText;
     [SerializeField] private TMP_Text _levelText;
     [SerializeField] private Image _fonExperience;
+    [SerializeField] private GameObject _notEnoughtMoneyPanel;
 
     private void Awake() => singleton = this;
 
@@ -51,5 +52,15 @@ public class MainStatsFunctional : MonoBehaviour
         Name = name;
         _nameText.text = Name;
         GlobalEvents.MainStatisticWasChanged?.Invoke();
+    }
+
+    public bool EnoughtMoney(int value)
+    {
+        if(Money < value)
+        {
+            _notEnoughtMoneyPanel.SetActive(true);
+            return false;
+        }
+        return true;
     }
 }

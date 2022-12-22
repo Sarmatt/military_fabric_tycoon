@@ -25,7 +25,11 @@ public class ShopCell : MonoBehaviour
 
     public void PlaceObject()
     {
-        PanelsHandler.singleton.ClosePanel(Panel);
-        BuildingGrid.singleton.StartPlacing(_object);
+        if (MainStatsFunctional.singleton.EnoughtMoney(Equipment.NeededMoney))
+        {
+            PanelsHandler.singleton.ClosePanel(Panel);
+            BuildingGrid.singleton.StartPlacing(_object);
+        }
+        
     }
 }
